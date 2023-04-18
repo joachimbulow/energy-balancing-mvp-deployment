@@ -3,10 +3,6 @@ kind: Application
 metadata:
   name: umbrella-chart
 spec:
-  destination:
-    namespace: default
-    server: https://kubernetes.default.svc
-  project: default
   source:
     path: charts
     repoURL: https://github.com/joachimbulow/energy-balancing-mvp-deployment
@@ -15,8 +11,16 @@ spec:
       releaseName: charts-v1
       valueFiles:
         - charts/values.yaml
+  destination:
+    namespace: energy-balancing-mvp
+    server: https://kubernetes.default.svc
+
+  project: default
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
