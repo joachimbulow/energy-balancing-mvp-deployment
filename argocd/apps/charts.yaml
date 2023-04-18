@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: strimzi-kafka
+  name: umbrella-chart
 spec:
   destination:
     namespace: default
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: charts/strimzi-kafka-operator
+    path: charts
     repoURL: https://github.com/joachimbulow/energy-balancing-mvp-deployment
     targetRevision: HEAD
     helm:
-      releaseName: kafka-v1
+      releaseName: charts-v1
+      chart: charts
       valueFiles:
-        - charts/strimzi-kafka-operator/values.yaml
-      chart: charts/strimzi-kafka-operator
+        - charts/values.yaml
 
   syncPolicy:
     automated:
