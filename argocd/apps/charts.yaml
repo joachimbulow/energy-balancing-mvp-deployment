@@ -13,7 +13,6 @@ spec:
     targetRevision: HEAD
     helm:
       releaseName: charts-v1
-      chart: charts
       valueFiles:
         - charts/values.yaml
 
