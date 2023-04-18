@@ -2,6 +2,7 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
   name: mvp-cluster
+  namespace: energy-balancing-mvp
 spec:
   kafka:
     version: 3.4.0
