@@ -1,2 +1,2 @@
-strimzi-kafka:
+strimzi-kafka-operator:
   replicas: 1
