@@ -10,7 +10,7 @@ spec:
     helm:
       releaseName: charts-v1
       valueFiles:
-        - charts/values.yaml
+        - values.yaml
   destination:
     namespace: energy-balancing-mvp
     server: https://kubernetes.default.svc
