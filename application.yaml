@@ -6,15 +6,16 @@ metadata:
 spec:
   project: default
 
-  # No web-hook -> 3 minute scaping intervals
+  # Using app-of-apps pattern
   source:
+    path: argocd/apps
     repoURL: https://github.com/joachimbulow/energy-balancing-mvp-deployment
     targetRevision: HEAD
-    path: dev
   destination:
     server: https://kubernetes.default.svc
-    namespace: energy-balancing-mvp
+    namespace: default
 
+  # No web-hook -> 3 minute scaping intervals
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

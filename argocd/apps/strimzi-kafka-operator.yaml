@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: strimzi-kafka
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/strimzi-kafka-operator
+    repoURL: https://github.com/joachimbulow/energy-balancing-mvp-deployment
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - strimzi-kafka-operator/values.yaml
+      releaseName: kafka-v1
+      chart: strimzi-kafka-operator
+      verify: true
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
