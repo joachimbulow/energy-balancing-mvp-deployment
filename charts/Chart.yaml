@@ -1,0 +1,9 @@
+apiVersion: v2
+name: umbrella-chart
+type: application
+version: 0.34.0
+appVersion: "1.0.0"
+dependencies:
+  - name: strimzi-kafka
+    version: 0.34.0
+    repository: https://artifacthub.io/packages/helm/strimzi/strimzi-kafka-operator
