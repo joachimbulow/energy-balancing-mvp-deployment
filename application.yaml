@@ -10,6 +10,7 @@ spec:
   source:
     repoURL: https://github.com/joachimbulow/energy-balancing-mvp-deployment
     targetRevision: HEAD
+    path: /dev
   destination:
     server: https://kubernetes.default.svc
     namespace: energy-balancing-mvp
