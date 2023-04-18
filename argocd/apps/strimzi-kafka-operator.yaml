@@ -12,11 +12,10 @@ spec:
     repoURL: https://github.com/joachimbulow/energy-balancing-mvp-deployment
     targetRevision: HEAD
     helm:
-      valueFiles:
-        - strimzi-kafka-operator/values.yaml
       releaseName: kafka-v1
-      chart: strimzi-kafka-operator
-      verify: true
+      valueFiles:
+        - charts/strimzi-kafka-operator/values.yaml
+      chart: charts/strimzi-kafka-operator
 
   syncPolicy:
     automated:
