@@ -34,7 +34,7 @@ spec:
     replicas: 3
     storage:
       type: persistent-claim
-      size: 500MB
+      size: 500Mi
       deleteClaim: false
   entityOperator:
     topicOperator: {}
