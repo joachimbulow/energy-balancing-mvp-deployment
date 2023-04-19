@@ -39,3 +39,22 @@ spec:
   entityOperator:
     topicOperator: {}
     userOperator: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mvp-cluster-kafka
+  namespace: energy-balancing-mvp
+spec:
+  type: LoadBalancer
+  selector:
+    strimzi.io/cluster: mvp-cluster
+    strimzi.io/kind: Kafka
+  ports:
+    - name: kafka-plain
+      port: 9092
+      targetPort: 9092
+    - name: kafka-tls
+      port: 9093
+      targetPort: 9093
+  externalTrafficPolicy: Local
