@@ -7,3 +7,6 @@ dependencies:
   - name: strimzi-kafka-operator
     version: 0.34.0
     repository: https://strimzi.io/charts/
+  - name: prometheus
+    version: 20.2.0
+    repository: https://prometheus-community.github.io/helm-charts
