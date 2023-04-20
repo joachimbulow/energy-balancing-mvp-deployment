@@ -1,60 +1,60 @@
-# apiVersion: kafka.strimzi.io/v1beta2
-# kind: Kafka
-# metadata:
-#   name: mvp-cluster
-#   namespace: energy-balancing-mvp
-# spec:
-#   kafka:
-#     version: 3.4.0
-#     replicas: 3
-#     listeners:
-#       - name: plain
-#         port: 9092
-#         type: internal
-#         tls: false
-#       - name: tls
-#         port: 9093
-#         type: internal
-#         tls: true
-#     config:
-#       offsets.topic.replication.factor: 3
-#       transaction.state.log.replication.factor: 3
-#       transaction.state.log.min.isr: 2
-#       default.replication.factor: 3
-#       min.insync.replicas: 2
-#       inter.broker.protocol.version: "3.4"
-#     storage:
-#       type: jbod
-#       volumes:
-#         - id: 0
-#           type: persistent-claim
-#           size: 5Gi
-#           deleteClaim: false
-#   zookeeper:
-#     replicas: 3
-#     storage:
-#       type: persistent-claim
-#       size: 500Mi
-#       deleteClaim: false
-#   entityOperator:
-#     topicOperator: {}
-#     userOperator: {}
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: mvp-cluster-kafka
-#   namespace: energy-balancing-mvp
-# spec:
-#   type: LoadBalancer
-#   selector:
-#     strimzi.io/cluster: mvp-cluster
-#     strimzi.io/kind: Kafka
-#   ports:
-#     - name: kafka-plain
-#       port: 9092
-#       targetPort: 9092
-#     - name: kafka-tls
-#       port: 9093
-#       targetPort: 9093
-#   externalTrafficPolicy: Local
+apiVersion: kafka.strimzi.io/v1beta2
+kind: Kafka
+metadata:
+  name: mvp-cluster
+  namespace: energy-balancing-mvp
+spec:
+  kafka:
+    version: 3.4.0
+    replicas: 3
+    listeners:
+      - name: plain
+        port: 9092
+        type: internal
+        tls: false
+      - name: tls
+        port: 9093
+        type: internal
+        tls: true
+    config:
+      offsets.topic.replication.factor: 3
+      transaction.state.log.replication.factor: 3
+      transaction.state.log.min.isr: 2
+      default.replication.factor: 3
+      min.insync.replicas: 2
+      inter.broker.protocol.version: "3.4"
+    storage:
+      type: jbod
+      volumes:
+        - id: 0
+          type: persistent-claim
+          size: 5Gi
+          deleteClaim: false
+  zookeeper:
+    replicas: 3
+    storage:
+      type: persistent-claim
+      size: 500Mi
+      deleteClaim: false
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mvp-cluster-kafka
+  namespace: energy-balancing-mvp
+spec:
+  type: LoadBalancer
+  selector:
+    strimzi.io/cluster: mvp-cluster
+    strimzi.io/kind: Kafka
+  ports:
+    - name: kafka-plain
+      port: 9092
+      targetPort: 9092
+    - name: kafka-tls
+      port: 9093
+      targetPort: 9093
+  externalTrafficPolicy: Local
