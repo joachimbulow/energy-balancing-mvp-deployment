@@ -7,9 +7,7 @@ dependencies:
   - name: strimzi-kafka-operator
     version: 0.34.0
     repository: https://strimzi.io/charts/
-  - name: prometheus
+  # A vast chart that comes bundled with anything we need
+  - name: kube-prometheus-stack
     version: 20.2.0
     repository: https://prometheus-community.github.io/helm-charts
-  - name: grafana
-    version: 6.53.0
-    repository: https://grafana.github.io/helm-charts
