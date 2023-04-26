@@ -24,4 +24,4 @@ spec:
 
     syncOptions:
       - CreateNamespace=true
-      - ServerSideApply=true
+      - ServerSideApply=true # Must be enabled in order to make prometheus
