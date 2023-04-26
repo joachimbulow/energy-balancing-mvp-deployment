@@ -7,7 +7,9 @@ metadata:
     app: grafana-service
 spec:
   selector:
-    app: grafana
+    app.kubernetes.io/instance: umbrella-chart
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: grafana
   ports:
     - port: 3000
   type: LoadBalancer
