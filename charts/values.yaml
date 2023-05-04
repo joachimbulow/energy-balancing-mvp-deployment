@@ -1,11 +1,11 @@
 strimzi-kafka-operator:
   replicas: 1
-prometheus:
-  server:
-    global:
-      ## How frequently to scrape targets
-      scrape_interval: 30s
-      ## How long until a scrape request times out
-      scrape_timeout: 20s
-      ## How frequently to evaluate rules
-      evaluation_interval: 1m
+prometheus-kafka-exporter:
+  kafkaServer:
+    - mvp-cluster-kafka:9092
+  prometheus:
+    serviceMonitor:
+      enabled: true
+      namespace: energy-balancing-mvp
+      additionalLabels:
+        release: charts-v1

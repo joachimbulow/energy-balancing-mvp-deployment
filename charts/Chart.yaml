@@ -11,3 +11,6 @@ dependencies:
   - name: kube-prometheus-stack
     version: 45.21.0
     repository: https://prometheus-community.github.io/helm-charts
+  - name: prometheus-kafka-exporter
+    version: 2.1.0
+    repository: https://prometheus-community.github.io/helm-charts
