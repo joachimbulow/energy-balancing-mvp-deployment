@@ -74,16 +74,9 @@ spec:
       targetPort: 9093
   externalTrafficPolicy: Local
 ---
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: kafka-metrics
-  labels:
-    app: strimzi
 data:
-  kafka-metrics-config.yml: 
+  kafka-metrics-config.yml: |
     # See https://github.com/prometheus/jmx_exporter for more info about JMX Prometheus Exporter metrics
-    # https://github.com/strimzi/strimzi-kafka-operator/blob/0.34.0/examples/metrics/kafka-metrics.yaml
     lowercaseOutputName: true
     rules:
     # Special cases and very specific rules
@@ -227,7 +220,7 @@ data:
     #- pattern: "kafka.server<type=broker-metadata-metrics><>(.+):"
     #  name: kafka_server_brokermetadatametrics_$1
     #  type: GAUGE
-  zookeeper-metrics-config.yml:
+  zookeeper-metrics-config.yml: |
     # See https://github.com/prometheus/jmx_exporter for more info about JMX Prometheus Exporter metrics
     lowercaseOutputName: true
     rules:
