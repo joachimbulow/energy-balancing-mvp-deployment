@@ -19,7 +19,9 @@ prometheus-kafka-exporter:
 
 influxdb:
   env:
-    INFLUXDB_DB: "influx"
-    ## TODO: I mean, this should really be a secret stored in Vault or smth
-    INFLUXDB_ADMIN_USER: "admin"
-    INFLUXDB_ADMIN_PASSWORD: "admin"
+    - name: INFLUXDB_DB
+      value: "influx"
+    - name: INFLUXDB_ADMIN_USER
+      value: "admin"
+    - name: INFLUXDB_ADMIN_PASSWORD
+      value: "admin"
