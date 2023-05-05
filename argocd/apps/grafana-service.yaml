@@ -4,6 +4,7 @@ metadata:
   name: grafana-service
   namespace: energy-balancing-mvp
   labels:
+    #Access influx via smth like "influx.energy-balancing-mvp.svc.cluster.local:xxxx"
     app: grafana-service
 spec:
   selector:

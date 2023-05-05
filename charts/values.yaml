@@ -1,5 +1,6 @@
 strimzi-kafka-operator:
   replicas: 1
+
 prometheus-kafka-exporter:
   kafkaServer:
     - mvp-cluster-kafka:9092
@@ -9,3 +10,10 @@ prometheus-kafka-exporter:
       namespace: energy-balancing-mvp
       additionalLabels:
         release: charts-v1
+
+influxdb:
+  env:
+    INFLUXDB_DB: "influx"
+    ## TODO: I mean, this should really be a secret stored in Vault or smth
+    INFLUXDB_ADMIN_USER: "admin"
+    INFLUXDB_ADMIN_PASSWORD: "admin"
