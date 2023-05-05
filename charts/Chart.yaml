@@ -7,10 +7,6 @@ dependencies:
   - name: strimzi-kafka-operator
     version: 0.34.0
     repository: https://strimzi.io/charts/
-  # A vast chart that comes bundled with anything we need for monitoring
-  - name: kube-prometheus-stack
-    version: 45.21.0
-    repository: https://prometheus-community.github.io/helm-charts
   - name: prometheus-kafka-exporter
     version: 2.1.0
     repository: https://prometheus-community.github.io/helm-charts
