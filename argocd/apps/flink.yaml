@@ -1,22 +1,22 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: flink
-spec:
-  source:
-    path: flink
-    repoURL: https://github.com/joachimbulow/energy-balancing-mvp-deployment
-    targetRevision: HEAD
-  destination:
-    namespace: energy-balancing-mvp
-    server: https://kubernetes.default.svc
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: flink
+# spec:
+#   source:
+#     path: flink
+#     repoURL: https://github.com/joachimbulow/energy-balancing-mvp-deployment
+#     targetRevision: HEAD
+#   destination:
+#     namespace: energy-balancing-mvp
+#     server: https://kubernetes.default.svc
 
-  project: default
+#   project: default
 
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
 
-    syncOptions:
-      - CreateNamespace=true
+#     syncOptions:
+#       - CreateNamespace=true
