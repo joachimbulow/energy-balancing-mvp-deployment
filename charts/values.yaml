@@ -1,3 +1,9 @@
+# Hopefully fixing annotation issue for ArgoCD when deploying crds having very long "last_config" values
+global:
+  crds:
+    annotations:
+      argocd.argoproj.io/sync-options: Replace=true
+
 strimzi-kafka-operator:
   replicas: 1
 
