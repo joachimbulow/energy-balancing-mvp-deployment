@@ -7,9 +7,9 @@ spec:
   project: default
 
   # Define a dependency on the umbrella-chart application
-  dependencies:
-    - name: umbrella-chart
-      namespace: energy-balancing-mvp
+  # dependencies:
+  #   - name: umbrella-chart
+  #     namespace: energy-balancing-mvp
 
   # Using app-of-apps pattern
   source:
