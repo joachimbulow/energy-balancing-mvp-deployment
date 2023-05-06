@@ -25,3 +25,7 @@ influxdb:
       value: "admin"
     - name: INFLUXDB_ADMIN_PASSWORD
       value: "admin"
+
+redis:
+  auth:
+    enabled: false
