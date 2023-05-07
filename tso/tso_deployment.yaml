@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tso
+  namespace: energy-balancing-mvp
+  labels:
+    app: tso
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tso
+  template:
+    metadata:
+      labels:
+        app: tso
+    spec:
+      containers:
+        - name: tso
+          image: pemmvpregistry.azurecr.io/tso:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: BROKER_URL
+              value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local"
+            - name: BROKER_PORT
+              value: "9092"
+            - name: BROKER
+              value: "KAFKA"
+          resources:
+            limits:
+              cpu: "2"
+              memory: "4Gi"
+            requests:
+              cpu: "1"
+              memory: "2Gi"
