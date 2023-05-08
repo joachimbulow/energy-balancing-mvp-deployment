@@ -18,7 +18,7 @@ spec:
           image: pemmvpregistry.azurecr.io/coordinator:v4 # UPDATE IMAGE TAG HERE WHEN PUSHING NEW
           env:
             - name: KAFKA_BOOTSTRAP_SERVERS
-              value: "mvp-cluster-kafka-bootstrap.energy-balancing-mvp.svc.cluster.local:9092"
+              value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local:9092"
             - name: INFLUX_URL
               value: "http://charts-v1-influxdb.energy-balancing-mvp.svc.cluster.local:8086"
             - name: REDIS_BROKER
