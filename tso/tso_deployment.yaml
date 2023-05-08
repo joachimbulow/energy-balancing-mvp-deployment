@@ -17,10 +17,8 @@ spec:
     spec:
       containers:
         - name: tso
-          image: pemmvpregistry.azurecr.io/tso:v1
+          image: pemmvpregistry.azurecr.io/tso:v2
           imagePullPolicy: Always
-          ports:
-            - containerPort: 8080
           env:
             - name: BROKER_URL
               value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local"
