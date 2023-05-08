@@ -6,7 +6,7 @@ metadata:
     app: flink
 data:
   flink-conf.yaml: |+
-    jobmanager.rpc.address: flink-jobmanager.energy-balancing-prototype.svc.cluster.local
+    jobmanager.rpc.address: flink-jobmanager.energy-balancing-mvp.svc.cluster.local
     taskmanager.numberOfTaskSlots: 2
     blob.server.port: 6124
     jobmanager.rpc.port: 6123
