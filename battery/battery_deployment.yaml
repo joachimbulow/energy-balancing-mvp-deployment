@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: battery
+  namespace: energy-balancing-mvp
+  labels:
+    app: battery
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: battery
+  template:
+    metadata:
+      labels:
+        app: battery
+    spec:
+      containers:
+        - name: battery
+          image: pemmvpregistry.azurecr.io/battery:v2
+          imagePullPolicy: Always
+          env:
+            - name: BROKER_URL
+              value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local:9092"
+            - name: BROKER
+              value: "KAFKA"
+            - name: N_BATTERIES
+              value: "5"
