@@ -29,15 +29,3 @@ influxdb:
 redis:
   auth:
     enabled: false
-
-kafkaTopic:
-  - enabled: true
-    name: inertia_measurements
-  - enabled: true
-    name: frequency_measurements
-  - enabled: true
-    name: pem_requests
-  - enabled: true
-    name: pem_responses
-  - enabled: true
-    name: battery_actions
