@@ -6,7 +6,6 @@ kind: Job
 metadata:
   name: flink-jobmanager
 spec:
-  parallelism: 1 # Set the value to greater than 1 to start standby JobManagers
   template:
     metadata:
       labels:
@@ -26,16 +25,8 @@ spec:
               value: "redis.energy-balancing-mvp.svc.cluster.local"
             - name: REDIS_PORT
               value: "6379"
-            - name: POD_IP
-              valueFrom:
-                fieldRef:
-                  apiVersion: v1
-                  fieldPath: status.podIP
-          # The following args overwrite the value of jobmanager.rpc.address configured in the configuration config map to POD_IP.
           args: [
               "standalone-job",
-              "--host",
-              "$(POD_IP)",
               "--job-classname",
               "main.CoordinationJob", # Main class of the job
             ] # optional arguments: ["--job-id", "<job id>", "--fromSavepoint", "/path/to/savepoint", "--allowNonRestoredState"]
@@ -59,7 +50,6 @@ spec:
             #   mountPath: /opt/flink/usrlib
           securityContext:
             runAsUser: 9999 # refers to user _flink_ from official flink image, change if necessary
-      serviceAccountName: flink-service-account # Service account which has the permissions to create, edit, delete ConfigMaps
       volumes:
         - name: flink-config-volume
           configMap:
