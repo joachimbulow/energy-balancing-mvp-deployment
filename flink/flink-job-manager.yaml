@@ -22,7 +22,7 @@ spec:
             - name: INFLUX_URL
               value: "http://charts-v1-influxdb.energy-balancing-mvp.svc.cluster.local:8086"
             - name: REDIS_BROKER
-              value: "redis.energy-balancing-mvp.svc.cluster.local"
+              value: "charts-v1-redis-master.energy-balancing-mvp.svc.cluster.local"
             - name: REDIS_PORT
               value: "6379"
           args: [
