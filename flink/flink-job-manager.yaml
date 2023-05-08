@@ -20,7 +20,7 @@ spec:
             - name: KAFKA_BOOTSTRAP_SERVERS
               value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local:9092"
             - name: INFLUX_URL
-              value: "charts-v1-influxdb.energy-balancing-mvp.svc.cluster.local:8086"
+              value: "http://charts-v1-influxdb.energy-balancing-mvp.svc.cluster.local:8086"
             - name: REDIS_BROKER
               value: "redis.energy-balancing-mvp.svc.cluster.local"
             - name: REDIS_PORT
