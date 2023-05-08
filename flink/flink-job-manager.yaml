@@ -18,12 +18,16 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: jobmanager
-          image: apache/flink:latest # Replace this with azure container registry image
+          image: pemmvpregistry.azurecr.io/coordinator:v4 # UPDATE IMAGE TAG HERE WHEN PUSHING NEW
           env:
-            - name: KAFKA_BROKER
-              value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local:9092" ########
-            - name: KAFKA_BROKER
-              value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local:9092" ########
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local:9092"
+            - name: INFLUX_URL
+              value: "charts-v1-influxdb.energy-balancing-mvp.svc.cluster.local:8086"
+            - name: REDIS_BROKER
+              value: "redis.energy-balancing-mvp.svc.cluster.local"
+            - name: REDIS_PORT
+              value: "6379"
             - name: POD_IP
               valueFrom:
                 fieldRef:
@@ -35,9 +39,7 @@ spec:
               "--host",
               "$(POD_IP)",
               "--job-classname",
-              "com.job.ClassName",
-              <optional arguments>,
-              <job arguments>,
+              "main.CoordinationJob", # Main class of the job
             ] # optional arguments: ["--job-id", "<job id>", "--fromSavepoint", "/path/to/savepoint", "--allowNonRestoredState"]
           ports:
             - containerPort: 6123

@@ -16,8 +16,16 @@ spec:
     spec:
       containers:
         - name: taskmanager
-          image: apache/flink:latest # Replace this with azure container registry image
+          image: pemmvpregistry.azurecr.io/coordinator:v4 # UPDATE IMAGE TAG HERE WHEN PUSHING NEW
           env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local:9092"
+            - name: INFLUX_URL
+              value: "charts-v1-influxdb.energy-balancing-mvp.svc.cluster.local:8086"
+            - name: REDIS_BROKER
+              value: "redis.energy-balancing-mvp.svc.cluster.local"
+            - name: REDIS_PORT
+              value: "6379"
           args: ["taskmanager"]
           ports:
             - containerPort: 6122
@@ -27,7 +35,7 @@ spec:
           livenessProbe:
             tcpSocket:
               port: 6122
-            initialDelaySeconds: 30
+            initialDelaySeconds: 60
             periodSeconds: 60
           volumeMounts:
             - name: flink-config-volume
