@@ -1,39 +1,49 @@
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
-  name: inertia_measurements
+  name: inertia-measurements
   labels:
     strimzi.io/cluster: mvp-cluster
     namespace: energy-balancing-mvp
+spec:
+  topicName: inertia_measurements
 ---
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
-  name: frequency_measurements
+  name: frequency-measurements
   labels:
     strimzi.io/cluster: mvp-cluster
     namespace: energy-balancing-mvp
+spec:
+  topicName: frequency_measurements
 ---
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
-  name: pem_requests
+  name: pem-requests
   labels:
     strimzi.io/cluster: mvp-cluster
     namespace: energy-balancing-mvp
+spec:
+  topicName: pem_requests
 ---
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
-  name: pem_responses
+  name: pem-responses
   labels:
     strimzi.io/cluster: mvp-cluster
     namespace: energy-balancing-mvp
+spec:
+  topicName: pem_responses
 ---
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
-  name: battery_actions
+  name: battery-actions
   labels:
     strimzi.io/cluster: mvp-cluster
     namespace: energy-balancing-mvp
+spec:
+  topicName: battery_actions
