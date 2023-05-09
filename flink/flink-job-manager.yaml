@@ -15,7 +15,7 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: jobmanager
-          image: pemmvpregistry.azurecr.io/coordinator:v6 # UPDATE IMAGE TAG HERE WHEN PUSHING NEW
+          image: pemmvpregistry.azurecr.io/coordinator:v7 # UPDATE IMAGE TAG HERE WHEN PUSHING NEW
           env:
             - name: KAFKA_BOOTSTRAP_SERVERS
               value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local:9092"
