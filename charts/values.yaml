@@ -42,3 +42,28 @@ influxdb:
 redis:
   auth:
     enabled: false
+
+ingress-nginx:
+  controller:
+    replicaCount: 1
+
+    service:
+      type: LoadBalancer
+      externalTrafficPolicy: Local
+
+    ingressClassResource:
+      enabled: true
+      defaultClass: true
+
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+
+    resources:
+      limits:
+        cpu: 100m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 256Mi
