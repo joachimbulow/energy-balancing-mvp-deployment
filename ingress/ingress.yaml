@@ -26,3 +26,13 @@ spec:
                 name: flink-jobmanager # Service name
                 port:
                   number: 8081
+    - host: argocd.roomcollab.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server # Service name
+                port:
+                  number: 80
