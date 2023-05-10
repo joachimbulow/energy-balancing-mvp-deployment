@@ -6,7 +6,7 @@ metadata:
 spec:
   kafka:
     version: 3.4.0
-    replicas: 3
+    replicas: 5
     listeners:
       - name: plain
         port: 9092
@@ -24,7 +24,6 @@ spec:
       offsets.topic.replication.factor: 3
       transaction.state.log.replication.factor: 3
       transaction.state.log.min.isr: 2
-      default.replication.factor: 3
       min.insync.replicas: 2
       inter.broker.protocol.version: "3.4"
     storage:
@@ -33,7 +32,7 @@ spec:
         - id: 0
           type: persistent-claim
           # 300 Gi totally consumed by brokers
-          size: 100Gi
+          size: 80Gi
           deleteClaim: false
     metricsConfig:
       type: jmxPrometheusExporter
