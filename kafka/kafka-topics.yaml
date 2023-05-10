@@ -48,7 +48,7 @@ spec:
   topicName: pem_responses
   # THIS IS KEY PARAMETER FOR SYSTEM LOAD OPTIMIZATION
   # We need at least as many partitions as there are N_BATTERIES in the battery simulations
-  partitinos: 100
+  partitions: 100
   # We MIGHT want to increase this number significantly due to the amount of traffic
   replicas: 3
 ---
