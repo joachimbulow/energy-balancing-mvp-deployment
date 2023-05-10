@@ -7,6 +7,9 @@ metadata:
     namespace: energy-balancing-mvp
 spec:
   topicName: inertia_measurements
+  # Two partitions, just for good measure
+  partitions: 2
+  replicas: 2
 ---
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
@@ -17,6 +20,9 @@ metadata:
     namespace: energy-balancing-mvp
 spec:
   topicName: frequency_measurements
+  # Two partitions, just for good measure
+  partitions: 2
+  replicas: 2
 ---
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
@@ -27,6 +33,9 @@ metadata:
     namespace: energy-balancing-mvp
 spec:
   topicName: pem_requests
+  # Two partitions, just for good measure
+  partitions: 2
+  replicas: 2
 ---
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
@@ -37,6 +46,11 @@ metadata:
     namespace: energy-balancing-mvp
 spec:
   topicName: pem_responses
+  # THIS IS KEY PARAMETER FOR SYSTEM LOAD OPTIMIZATION
+  # We need at least as many partitions as there are N_BATTERIES in the battery simulations
+  partitinos: 100
+  # We MIGHT want to increase this number significantly due to the amount of traffic
+  replicas: 3
 ---
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
@@ -47,3 +61,6 @@ metadata:
     namespace: energy-balancing-mvp
 spec:
   topicName: battery_actions
+  # Two partitions, just for good measure
+  partitions: 2
+  replicas: 2

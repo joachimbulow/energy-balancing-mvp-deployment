@@ -17,6 +17,10 @@ spec:
         type: internal
         tls: true
     config:
+      # Use only the topics generated in kafka-topics.yaml
+      auto.create.topics.enable: "false"
+      # 1 week retention for logs
+      log.retention.hours: 168
       offsets.topic.replication.factor: 3
       transaction.state.log.replication.factor: 3
       transaction.state.log.min.isr: 2
@@ -28,7 +32,8 @@ spec:
       volumes:
         - id: 0
           type: persistent-claim
-          size: 5Gi
+          # 300 Gi totally consumed by brokers
+          size: 100Gi
           deleteClaim: false
     metricsConfig:
       type: jmxPrometheusExporter
@@ -40,7 +45,7 @@ spec:
     replicas: 3
     storage:
       type: persistent-claim
-      size: 500Mi
+      size: 4Gi
       deleteClaim: false
     metricsConfig:
       type: jmxPrometheusExporter
@@ -49,7 +54,8 @@ spec:
           name: kafka-metrics
           key: zookeeper-metrics-config.yml
   entityOperator:
-    topicOperator: {}
+    topicOperator:
+      watchedNamespace: energy-balancing-mvp
     userOperator: {}
   kafkaExporter:
     topicRegex: ".*"
