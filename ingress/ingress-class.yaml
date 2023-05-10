@@ -3,4 +3,4 @@ kind: IngressClass
 metadata:
   name: nginx
 spec:
-  controller: charts-v1-ingress-nginx-controller
+  controller: kubernetes.io/ingress-nginx
