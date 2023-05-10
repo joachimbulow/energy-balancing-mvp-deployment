@@ -17,6 +17,19 @@ prometheus-kafka-exporter:
       additionalLabels:
         release: charts-v1
 
+grafana:
+  enabled: true
+
+  persistence:
+    enabled: true
+    type: pvc
+    storageClassName: default
+    accessModes:
+      - ReadWriteOnce
+    size: 4Gi
+    finalizers:
+      - kubernetes.io/pvc-protection
+
 influxdb:
   env:
     - name: INFLUXDB_DB
