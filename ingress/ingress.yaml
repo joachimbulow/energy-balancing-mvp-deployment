@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-ui-ingress
+spec:
+  rules:
+    - host: grafana.roomcollab.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prom-stack-grafana # Service name
+                port:
+                  number: 80
+
+    - host: flink.roomcollab.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: flink-jobmanager # Service name
+                port:
+                  number: 8081
