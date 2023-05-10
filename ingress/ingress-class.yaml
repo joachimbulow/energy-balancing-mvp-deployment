@@ -3,4 +3,4 @@ kind: IngressClass
 metadata:
   name: nginx
 spec:
-  controller: kubernetes.io/ingress-nginx
+  controller: k8s.io/ingress-nginx
