@@ -15,7 +15,7 @@ prometheus-kafka-exporter:
       enabled: true
       namespace: energy-balancing-mvp
       additionalLabels:
-        release: charts-v1
+        release: prom-stack
 
 influxdb:
   env:
