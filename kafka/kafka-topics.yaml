@@ -46,9 +46,7 @@ metadata:
     namespace: energy-balancing-mvp
 spec:
   topicName: pem_responses
-  # THIS IS KEY PARAMETER FOR SYSTEM LOAD OPTIMIZATION
-  # We need at least as many partitions as there are N_BATTERIES in the battery simulations
-  partitions: 100
+  partitions: 15
   # We MIGHT want to increase this number significantly due to the amount of traffic
   replicas: 3
 ---
