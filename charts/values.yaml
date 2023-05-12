@@ -6,7 +6,7 @@ global:
 
 prometheus-kafka-exporter:
   kafkaServer:
-    - mvp-cluster-kafka.svc.cluster.local:9092
+    - mvp-cluster-kafka:9092
   prometheus:
     serviceMonitor:
       enabled: true
