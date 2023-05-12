@@ -48,6 +48,10 @@ ingress-nginx:
       type: LoadBalancer
       externalTrafficPolicy: Local
 
+    config:
+      use-forwarded-headers: "true"
+      ssl-redirect: "false"
+
     ingressClassResource:
       enabled: true
       defaultClass: true
