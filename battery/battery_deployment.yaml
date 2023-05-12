@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: battery
-          image: pemmvpregistry.azurecr.io/battery:v2
+          image: pemmvpregistry.azurecr.io/battery:v3
           imagePullPolicy: Always
           env:
             - name: BROKER_URL
@@ -26,3 +26,13 @@ spec:
               value: "KAFKA"
             - name: N_BATTERIES
               value: "5"
+            - name: REQUEST_INTERVAL_SECONDS
+              value: "30"
+            - name: PACKET_POWER_W
+              value: "4000"
+            - name: PACKET_TIME_S
+              value: "30"
+            - name: UPPER_BOUND_BATTERY_CAPACITY
+              value: "0.8"
+            - name: LOWER_BOUND_BATTERY_CAPACITY
+              value: "0.2"
