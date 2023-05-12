@@ -26,3 +26,13 @@ spec:
                 name: flink-jobmanager # Service name
                 port:
                   number: 8081
+    - host: prometheus.roomcollab.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prom-stack-kube-prometheus-prometheus # Service name
+                port:
+                  number: 9090
