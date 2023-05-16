@@ -7,10 +7,10 @@
 # Step 5 - repeat steps 1-4 until the simulation is complete
 
 SIMULATION_INDEX=0
-SIMULATION_TIME_MINUTES=2
+SIMULATION_TIME_MINUTES=10
 # Each index is a simulation parameter
-BATTERY_PODS=(50 60)
-N_BATTERIES=(50 60)
+BATTERY_PODS=(50 100 100 200 400 600 800 1000)
+N_BATTERIES=(50 100 200 200 400 500 800 1000)
 
 # We expect you to be in the root of the project when running this file
 
@@ -23,17 +23,17 @@ for ((i=0; i < ${#BATTERY_PODS[@]}; i++)); do
     ./scripts/scale-system.sh ${BATTERY_PODS[$i]} ${N_BATTERIES[$i]}
 
     echo "Waiting a while to allow the system to settle"
-    ./scripts/sleep-timer.sh 60
+    ./scripts/sleep-timer.sh 120
     
 
     echo "╦═╗┌─┐┌─┐┌─┐┌┬┐";
     echo "╠╦╝├┤ └─┐├┤  │ ";
     echo "╩╚═└─┘└─┘└─┘ ┴ ";
     
-    echo "Resetting the TSO to reset the simulation"
+    echo "Resetting the TSO to reset the simulation... we continue once it is has been deleted..."
     ./scripts/reset-tso.sh
     
-    ./scripts/sleep-timer.sh 10
+    ./scripts/sleep-timer.sh 5
 
     # For MacOS u need coreutils (install with `brew install coreutils`)
     time=$(gdate +%s%N)
