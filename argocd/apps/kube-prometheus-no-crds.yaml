@@ -12,12 +12,22 @@ spec:
     helm:
       releaseName: prom-stack
       skipCrds: true
+      values: |
+        grafana:
+          enabled: true
+          persistence:
+            enabled: true
+            type: pvc
+            storageClassName: default
+            accessModes:
+            - ReadWriteOnce
+            size: 4Gi
+            finalizers:
+            - kubernetes.io/pvc-protection
   destination:
     namespace: energy-balancing-mvp
     server: https://kubernetes.default.svc
-
   project: default
-
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
