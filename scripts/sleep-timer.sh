@@ -1,23 +1,43 @@
 #!/bin/bash
 
-total_duration_minutes=$1  # Total duration in minutes
-sleep_interval_minutes=$2  # Sleep interval in minutes
+# Check if the argument is provided
+if [ $# -eq 0 ]; then
+    echo "Please provide the time in seconds as an argument."
+    exit 1
+fi
 
-# Convert total_duration_minutes to seconds
-total_duration_seconds=$((total_duration_minutes * 60))
+# Check if the argument is a number
+if ! [[ $1 =~ ^[0-9]+$ ]]; then
+    echo "The argument must be a positive integer."
+    exit 1
+fi
 
-# Loop until total_duration_seconds is reached
-current_duration=0
-while (( current_duration < total_duration_seconds )); do
-  # Calculate remaining duration
-  remaining_duration_seconds=$((total_duration_seconds - current_duration))
-  remaining_duration_minutes=$((remaining_duration_seconds / 60))
-  
-  echo "Sleeping for ${sleep_interval_minutes} minute(s) - ${remaining_duration_minutes} minute(s) remaining..."
-  sleep ${sleep_interval_minutes}m
-  
-  # Increment current duration
-  current_duration=$((current_duration + (sleep_interval_minutes * 60)))
+# Define the total time
+total_time=$1
+remaining_time=$total_time
+
+# Define the progress bar
+bar_length=50
+bar_filled=0
+printf -v bar_empty "%*s" $bar_length
+
+# Timer loop
+while [ $remaining_time -gt 0 ]; do
+    # Calculate the filled part of the progress bar
+    bar_filled=$(( (total_time - remaining_time + 1) * bar_length / total_time ))
+
+    # Generate the progress bar
+    printf "\r[%.*s%.*s] %02d:%02d" \
+        $bar_filled "${bar_empty// /#}" \
+        $((bar_length - bar_filled)) "${bar_empty}" \
+        $((remaining_time / 60)) $((remaining_time % 60))
+
+    # Pause for a second
+    sleep 1
+
+    # Decrease the remaining time
+    remaining_time=$(( remaining_time - 1 ))
 done
 
-echo "Sleep completed for ${total_duration_minutes} minute(s)."
+# Print a new line at the end
+echo ""
