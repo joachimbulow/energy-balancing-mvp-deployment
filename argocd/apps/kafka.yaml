@@ -1,21 +1,21 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: kafka-cluster
-# spec:
-#   source:
-#     path: kafka
-#     repoURL: https://github.com/joachimbulow/energy-balancing-mvp-deployment
-#     targetRevision: HEAD
-#   destination:
-#     namespace: energy-balancing-mvp
-#     server: https://kubernetes.default.svc
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kafka-cluster
+spec:
+  source:
+    path: kafka
+    repoURL: https://github.com/joachimbulow/energy-balancing-mvp-deployment
+    targetRevision: HEAD
+  destination:
+    namespace: energy-balancing-mvp
+    server: https://kubernetes.default.svc
 
-#   project: default
+  project: default
 
-#   syncPolicy:
-#     syncOptions:
-#       - CreateNamespace=true
-#     automated:
-#       prune: true
-#       selfHeal: false
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: false
