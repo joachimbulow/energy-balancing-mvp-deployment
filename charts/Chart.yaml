@@ -4,9 +4,9 @@ type: application
 version: 0.34.0
 appVersion: "1.0.0"
 dependencies:
-  - name: strimzi-kafka-operator
-    version: 0.34.0
-    repository: https://strimzi.io/charts/
+  # - name: strimzi-kafka-operator
+  #   version: 0.34.0
+  #   repository: https://strimzi.io/charts/
   - name: prometheus-kafka-exporter
     version: 2.1.0
     repository: https://prometheus-community.github.io/helm-charts
