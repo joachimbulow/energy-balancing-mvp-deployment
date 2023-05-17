@@ -17,7 +17,6 @@ dischargeSum=$(echo $result | awk '/dischargeActions/ {print $14}')
 result=$(kubectl exec charts-v1-influxdb-0 -- influx --database influx -precision rfc3339 --execute "SELECT MEAN(frequency) AS averageFrequency FROM frequency WHERE time > $time")
 
 # - - - - Result is retarded, so this is the best we can do for now to extract the right data
-echo $result
 averageFrequency=$(echo $result | awk '/averageFrequency/ {print $8}')
 
 
