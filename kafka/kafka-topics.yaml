@@ -46,7 +46,7 @@ metadata:
     namespace: energy-balancing-mvp
 spec:
   topicName: pem_responses
-  partitions: 15
+  partitions: 10
   # We MIGHT want to increase this number significantly due to the amount of traffic
   replicas: 3
 ---
