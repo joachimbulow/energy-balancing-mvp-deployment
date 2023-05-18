@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: battery
-          image: pemmvpregistry.azurecr.io/battery:v3
+          image: pemmvpregistry.azurecr.io/battery:v4
           imagePullPolicy: Always
           env:
             - name: BROKER_URL
