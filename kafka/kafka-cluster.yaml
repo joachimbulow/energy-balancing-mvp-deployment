@@ -19,8 +19,12 @@ spec:
     config:
       # Use only the topics generated in kafka-topics.yaml
       auto.create.topics.enable: "false"
-      # 1 week retention for logs
-      log.retention.hours: 168
+      # 1 day retention for logs
+      log.retention.hours: 24
+      # Delete inactive consumer groups by removing stale offsets
+      offsets.retention.minutes: 5
+
+      log.retention.check.interval.ms: 300000
       offsets.topic.replication.factor: 3
       transaction.state.log.replication.factor: 3
       transaction.state.log.min.isr: 2
