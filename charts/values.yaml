@@ -7,6 +7,13 @@ global:
 prometheus-kafka-exporter:
   kafkaServer:
     - mvp-cluster-kafka:9092
+  resources:
+    requests:
+      cpu: "200m" # Amount of CPU to request
+      memory: "256Mi" # Amount of memory to request
+    limits:
+      cpu: "400m" # Maximum amount of CPU the exporter can use
+      memory: "1024Mi"
   prometheus:
     serviceMonitor:
       enabled: true
