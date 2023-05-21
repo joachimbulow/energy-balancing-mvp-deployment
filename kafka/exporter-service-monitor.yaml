@@ -9,7 +9,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/instance: mvp-cluster
+      app.kubernetes.io/instance: kafka-cluster
       app.kubernetes.io/name: kafka-exporter
   endpoints:
     - port: "9404"

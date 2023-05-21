@@ -4,7 +4,7 @@ metadata:
   name: kafka-exporter-service
   namespace: energy-balancing-mvp
   labels:
-    app.kubernetes.io/instance: mvp-cluster
+    app.kubernetes.io/instance: kafka-cluster
     app.kubernetes.io/name: kafka-exporter
 spec:
   selector:

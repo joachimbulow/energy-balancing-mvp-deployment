@@ -4,25 +4,25 @@ global:
     annotations:
       argocd.argoproj.io/sync-options: Replace=true
 
-prometheus-kafka-exporter:
-  kafkaServer:
-    - mvp-cluster-kafka:9092
-  verbosity: 2
-  sarama:
-    logEnabled: true
-  resources:
-    requests:
-      cpu: "400m" # Amount of CPU to request
-      memory: "1024Mi" # Amount of memory to request
-    limits:
-      cpu: "800m" # Maximum amount of CPU the exporter can use
-      memory: "2048Mi"
-  prometheus:
-    serviceMonitor:
-      enabled: true
-      namespace: energy-balancing-mvp
-      additionalLabels:
-        release: prom-stack
+# prometheus-kafka-exporter:
+#   kafkaServer:
+#     - mvp-cluster-kafka:9092
+#   verbosity: 2
+#   sarama:
+#     logEnabled: true
+#   resources:
+#     requests:
+#       cpu: "400m" # Amount of CPU to request
+#       memory: "1024Mi" # Amount of memory to request
+#     limits:
+#       cpu: "800m" # Maximum amount of CPU the exporter can use
+#       memory: "2048Mi"
+#   prometheus:
+#     serviceMonitor:
+#       enabled: true
+#       namespace: energy-balancing-mvp
+#       additionalLabels:
+#         release: prom-stack
 
 grafana:
   enabled: true
