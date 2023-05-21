@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: flink-taskmanager
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: flink
@@ -45,6 +45,13 @@ spec:
             #   mountPath: /opt/flink/usrlib
           securityContext:
             runAsUser: 9999 # refers to user _flink_ from official flink image, change if necessary
+          resources:
+            requests:
+              cpu: "1.5"
+              memory: "3Gi"
+            limits:
+              cpu: "3"
+              memory: "6Gi"
       volumes:
         - name: flink-config-volume
           configMap:
