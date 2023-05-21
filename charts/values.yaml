@@ -12,11 +12,11 @@ prometheus-kafka-exporter:
     logEnabled: true
   resources:
     requests:
-      cpu: "200m" # Amount of CPU to request
-      memory: "256Mi" # Amount of memory to request
+      cpu: "400m" # Amount of CPU to request
+      memory: "1024Mi" # Amount of memory to request
     limits:
-      cpu: "400m" # Maximum amount of CPU the exporter can use
-      memory: "1024Mi"
+      cpu: "800m" # Maximum amount of CPU the exporter can use
+      memory: "2048Mi"
   prometheus:
     serviceMonitor:
       enabled: true
