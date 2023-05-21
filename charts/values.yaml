@@ -8,6 +8,8 @@ prometheus-kafka-exporter:
   kafkaServer:
     - mvp-cluster-kafka:9092
   verbosity: 2
+  sarama:
+    logEnabled: true
   resources:
     requests:
       cpu: "200m" # Amount of CPU to request
