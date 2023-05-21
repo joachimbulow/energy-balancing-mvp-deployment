@@ -13,5 +13,5 @@ spec:
       app.kubernetes.io/instance: kafka-cluster
       app.kubernetes.io/name: kafka-exporter
   endpoints:
-    - port: "9404"
+    - port: kafkametrics
       interval: 15s

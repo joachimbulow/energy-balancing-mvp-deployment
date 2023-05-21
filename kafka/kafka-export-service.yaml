@@ -11,6 +11,7 @@ spec:
     app.kubernetes.io/instance: mvp-cluster
     app.kubernetes.io/name: kafka-exporter
   ports:
-    - protocol: TCP
+    - name: kafkametrics
+      protocol: TCP
       port: 9404
       targetPort: 9404
