@@ -4,6 +4,7 @@ metadata:
   name: kafka-exporter-monitor
   namespace: energy-balancing-mvp
   labels:
+    release: prom-stack
     app.kubernetes.io/instance: mvp-cluster
     app.kubernetes.io/name: kafka-exporter
 spec:
