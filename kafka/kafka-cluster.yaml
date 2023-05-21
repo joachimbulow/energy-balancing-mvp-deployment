@@ -31,9 +31,9 @@ spec:
       volumes:
         - id: 0
           type: persistent-claim
-          # 300 Gi totally consumed by brokers
+          # 600 Gi totally consumed by brokers
           size: 80Gi
-          deleteClaim: false
+          deleteClaim: true
     metricsConfig:
       type: jmxPrometheusExporter
       valueFrom:
@@ -45,7 +45,7 @@ spec:
     storage:
       type: persistent-claim
       size: 4Gi
-      deleteClaim: false
+      deleteClaim: true
     metricsConfig:
       type: jmxPrometheusExporter
       valueFrom:
