@@ -34,6 +34,13 @@ spec:
           # 600 Gi totally consumed by brokers
           size: 80Gi
           deleteClaim: true
+    resources:
+      requests:
+        memory: 1Gi
+        cpu: "1"
+      limits:
+        memory: 3Gi
+        cpu: "1.5"
     metricsConfig:
       type: jmxPrometheusExporter
       valueFrom:
