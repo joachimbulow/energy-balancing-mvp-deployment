@@ -7,8 +7,7 @@ global:
 prometheus-kafka-exporter:
   kafkaServer:
     - mvp-cluster-kafka:9092
-  extraArgs:
-    - "--verbosity=2"
+  verbosity: 2
   resources:
     requests:
       cpu: "200m" # Amount of CPU to request
