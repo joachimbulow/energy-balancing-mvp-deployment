@@ -47,11 +47,11 @@ spec:
             runAsUser: 9999 # refers to user _flink_ from official flink image, change if necessary
           resources:
             requests:
-              cpu: "1.5"
-              memory: "3Gi"
-            limits:
               cpu: "3"
               memory: "6Gi"
+            limits:
+              cpu: "3.5"
+              memory: "10Gi"
       volumes:
         - name: flink-config-volume
           configMap:

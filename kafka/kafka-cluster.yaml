@@ -40,11 +40,11 @@ spec:
           deleteClaim: true
     resources:
       requests:
-        memory: 1Gi
-        cpu: "1"
+        memory: 12Gi
+        cpu: "3"
       limits:
-        memory: 3Gi
-        cpu: "1.5"
+        memory: 14Gi
+        cpu: "3.5"
     metricsConfig:
       type: jmxPrometheusExporter
       valueFrom:
@@ -55,7 +55,7 @@ spec:
     replicas: 3
     storage:
       type: persistent-claim
-      size: 4Gi
+      size: 100Gi
       deleteClaim: true
     metricsConfig:
       type: jmxPrometheusExporter
