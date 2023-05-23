@@ -17,8 +17,15 @@ spec:
     spec:
       containers:
         - name: battery
-          image: pemmvpregistry.azurecr.io/battery:v4
+          image: pemmvpregistry.azurecr.io/battery:v5
           imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "50m"
+            limits:
+              memory: "250Mi"
+              cpu: "70m"
           env:
             - name: BROKER_URL
               value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local:9092"
@@ -27,7 +34,7 @@ spec:
             - name: N_BATTERIES
               value: "5"
             - name: REQUEST_INTERVAL_SECONDS
-              value: "30"
+              value: "300"
             - name: PACKET_POWER_W
               value: "4000"
             - name: PACKET_TIME_S
