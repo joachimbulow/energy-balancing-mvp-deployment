@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: tso
-          image: pemmvpregistry.azurecr.io/tso:v6
+          image: pemmvpregistry.azurecr.io/tso:v7
           imagePullPolicy: Always
           env:
             - name: BROKER_URL
