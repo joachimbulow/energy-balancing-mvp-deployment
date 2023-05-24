@@ -7,14 +7,19 @@ metadata:
 data:
   flink-conf.yaml: |+
     jobmanager.rpc.address: flink-jobmanager.energy-balancing-mvp.svc.cluster.local
-    taskmanager.numberOfTaskSlots: 4
     blob.server.port: 6124
     jobmanager.rpc.port: 6123
     taskmanager.rpc.port: 6122
     queryable-state.proxy.ports: 6125
-    jobmanager.memory.process.size: 1600m
-    taskmanager.memory.process.size: 1728m
+
+    jobmanager.memory.process.size: 2000m
+    taskmanager.memory.process.size: 7000m
+    kubernetes.taskmanager.cpu.amount: 3
+
+    taskmanager.numberOfTaskSlots: 3
+
     parallelism.default: 4
+
     scheduler-mode: reactive
     execution.checkpointing.interval: 10s
   log4j-console.properties: |+
