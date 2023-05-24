@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: battery
-          image: pemmvpregistry.azurecr.io/battery:v6
+          image: pemmvpregistry.azurecr.io/battery:v7
           imagePullPolicy: Always
           resources:
             requests:
@@ -48,3 +48,5 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            - name: KAFKA_OFFSET_COMMIT_INTERVAL_MILLIS
+              value: "1200"
