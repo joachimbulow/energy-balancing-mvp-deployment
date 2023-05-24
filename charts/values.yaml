@@ -29,6 +29,12 @@ influxdb:
 redis:
   auth:
     enabled: false
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: prom-stack
 
 ingress-nginx:
   controller:
