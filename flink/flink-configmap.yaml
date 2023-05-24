@@ -18,7 +18,7 @@ data:
 
     taskmanager.numberOfTaskSlots: 3
 
-    parallelism.default: 4
+    parallelism.default: 15
 
     scheduler-mode: reactive
     execution.checkpointing.interval: 10s
