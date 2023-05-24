@@ -1,11 +1,12 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: battery
   namespace: energy-balancing-mvp
   labels:
     app: battery
 spec:
+  podManagementPolicy: Parallel
   replicas: 5
   selector:
     matchLabels:
@@ -43,3 +44,7 @@ spec:
               value: "0.8"
             - name: LOWER_BOUND_BATTERY_CAPACITY
               value: "0.2"
+            - name: CONSUMER_GROUP_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
