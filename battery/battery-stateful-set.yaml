@@ -18,12 +18,12 @@ spec:
     spec:
       containers:
         - name: battery
-          image: pemmvpregistry.azurecr.io/battery:v5
+          image: pemmvpregistry.azurecr.io/battery:v6
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "55Mi"
-              cpu: "15m"
+              memory: "100Mi"
+              cpu: "35m"
             limits:
               memory: "150Mi"
               cpu: "45m"
