@@ -6,24 +6,31 @@
 # Step 4 - gather the data from Influx, perform analysis on it and save to a text file in a timely manner
 # Step 5 - repeat steps 1-4 until the simulation is complete
 
-SIMULATION_INDEX=0
-SIMULATION_TIME_MINUTES=10
-# Each index is a simulation parameter
-BATTERY_PODS=(50 100 100 200 400 600 800 1000)
-N_BATTERIES=(50 100 200 200 400 500 800 1000)
+
+######################################
 
 # We expect you to be in the root of the project when running this file
+
+SIMULATION_TIME_MINUTES=25
+# Each index is a simulation parameter
+BATTERY_PODS=(50 100 100 200 400 600 700 800 1000 1)
+N_BATTERIES=(50 100 200 200 400 500 700 800 1000 1)
+
+# We just assume batteries always have a wattage of 4000
+PACKET_TIME_S=(60 60 60 60 60 60 60 60 60 60)
+REQUEST_INTERVAL_SECONDS=(60 60 60 60 60 60 60 60 60 60)
+
+
 
 for ((i=0; i < ${#BATTERY_PODS[@]}; i++)); do
     echo "╔═╗┌─┐┌─┐┬  ┌─┐";
     echo "╚═╗│  ├─┤│  ├┤ ";
     echo "╚═╝└─┘┴ ┴┴─┘└─┘";
 
-    echo "Scaling to ${BATTERY_PODS[$i]} battery pods - each with ${N_BATTERIES[$i]} batteries"
-    ./scripts/scale-system.sh ${BATTERY_PODS[$i]} ${N_BATTERIES[$i]}
+    ./scripts/scale-system.sh ${BATTERY_PODS[$i]} ${N_BATTERIES[$i]} ${PACKET_TIME_S[$i]} ${REQUEST_INTERVAL_SECONDS[$i]}
 
     echo "Waiting a while to allow the system to settle"
-    ./scripts/sleep-timer.sh 120
+    ./scripts/sleep-timer.sh 90
     
 
     echo "╦═╗┌─┐┌─┐┌─┐┌┬┐";
@@ -56,6 +63,5 @@ for ((i=0; i < ${#BATTERY_PODS[@]}; i++)); do
     echo "╦═╗┌─┐┌─┐┌─┐┌─┐┌┬┐";
     echo "╠╦╝├┤ ├─┘├┤ ├─┤ │ ";
     echo "╩╚═└─┘┴  └─┘┴ ┴ ┴ ";
-    SIMULATION_INDEX=$((SIMULATION_INDEX + 1))
 
 done
