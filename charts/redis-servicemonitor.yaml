@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: redis-exporter-monitor
+  namespace: energy-balancing-mvp
+  labels:
+    release: prom-stack
+    app.kubernetes.io/instance: redis-exporter-monitor
+    app.kubernetes.io/name: redis-exporter
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: umbrella-chart
+      app.kubernetes.io/name: redis
+  endpoints:
+    - port: http-metrics
+      interval: 15s
