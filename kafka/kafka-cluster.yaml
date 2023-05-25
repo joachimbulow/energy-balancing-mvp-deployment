@@ -41,10 +41,10 @@ spec:
     resources:
       requests:
         memory: 12Gi
-        cpu: "3"
+        cpu: "2"
       limits:
         memory: 14Gi
-        cpu: "3.5"
+        cpu: "2.5"
     metricsConfig:
       type: jmxPrometheusExporter
       valueFrom:
