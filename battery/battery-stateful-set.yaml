@@ -23,10 +23,10 @@ spec:
           resources:
             requests:
               memory: "100Mi"
-              cpu: "35m"
+              cpu: "75m"
             limits:
               memory: "150Mi"
-              cpu: "45m"
+              cpu: "90m"
           env:
             - name: BROKER_URL
               value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local:9092"
