@@ -23,10 +23,10 @@ spec:
           resources:
             requests:
               memory: "130Mi"
-              cpu: "180m" # 180m * 500 = 90 cores
+              cpu: "360m" # 180m * 500 = 90 cores // Doubled now to try 250 * 2000
             limits:
               memory: "150Mi"
-              cpu: "210m"
+              cpu: "400m"
           env:
             - name: BROKER_URL
               value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local:9092"
@@ -39,7 +39,7 @@ spec:
             - name: PACKET_POWER_W
               value: "4000" # Needs to correspond to TSO value
             - name: PACKET_TIME_S
-              value: "30" # Needs to correspond to TSO value
+              value: "300" # Needs to correspond to TSO value
             - name: UPPER_BOUND_BATTERY_CAPACITY
               value: "0.8"
             - name: LOWER_BOUND_BATTERY_CAPACITY

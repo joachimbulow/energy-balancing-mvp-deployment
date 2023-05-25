@@ -27,7 +27,7 @@ spec:
             - name: BROKER
               value: "KAFKA"
             - name: PACKET_TIME_S
-              value: "30" # Needs to correspond to battery value
+              value: "300" # Needs to correspond to battery value
             - name: PACKET_POWER_W
               value: "4000" # Needs to correspond to battery value
           resources:
