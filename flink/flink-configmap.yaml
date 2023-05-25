@@ -14,7 +14,7 @@ data:
 
     jobmanager.memory.process.size: 2000m
     taskmanager.memory.process.size: 7000m
-    kubernetes.taskmanager.cpu.amount: 3
+    kubernetes.taskmanager.cpu.amount: 2
 
     taskmanager.numberOfTaskSlots: 3
 
