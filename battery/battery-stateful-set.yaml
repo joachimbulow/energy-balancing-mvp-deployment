@@ -25,7 +25,7 @@ spec:
               memory: "65Mi"
               cpu: "90m" # 180m * 500 = 90 cores // trying half to see if 2000 pods is better
             limits:
-              memory: "75i"
+              memory: "75Mi"
               cpu: "105m"
           env:
             - name: BROKER_URL
