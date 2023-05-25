@@ -22,11 +22,11 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "100Mi"
-              cpu: "90m"
+              memory: "130Mi"
+              cpu: "180m" # 180m * 500 = 90 cores
             limits:
               memory: "150Mi"
-              cpu: "120m"
+              cpu: "210m"
           env:
             - name: BROKER_URL
               value: "mvp-cluster-kafka.energy-balancing-mvp.svc.cluster.local:9092"
