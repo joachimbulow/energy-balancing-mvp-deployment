@@ -22,10 +22,10 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "65Mi"
+              memory: "150Mi"
               cpu: "90m" # 180m * 500 = 90 cores // trying half to see if 2000 pods is better
             limits:
-              memory: "75Mi"
+              memory: "175Mi"
               cpu: "105m"
           env:
             - name: BROKER_URL
