@@ -35,11 +35,11 @@ spec:
             - name: N_BATTERIES
               value: "5"
             - name: REQUEST_INTERVAL_SECONDS
-              value: "300"
+              value: "20"
             - name: PACKET_POWER_W
               value: "4000" # Needs to correspond to TSO value
             - name: PACKET_TIME_S
-              value: "300" # Needs to correspond to TSO value
+              value: "20" # Needs to correspond to TSO value
             - name: UPPER_BOUND_BATTERY_CAPACITY
               value: "0.8"
             - name: LOWER_BOUND_BATTERY_CAPACITY
