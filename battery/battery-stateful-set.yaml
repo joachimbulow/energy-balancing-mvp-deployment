@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: battery
-          image: pemmvpregistry.azurecr.io/battery:v10 # DELETE: next version is 13
+          image: pemmvpregistry.azurecr.io/battery:v13
           imagePullPolicy: Always
           resources:
             requests:
@@ -50,3 +50,5 @@ spec:
                   fieldPath: metadata.name
             - name: KAFKA_OFFSET_COMMIT_INTERVAL_MILLIS
               value: "1200"
+            - name: INFLUX
+              value: "http://charts-v1-influxdb.energy-balancing-mvp.svc.cluster.local:8086"
