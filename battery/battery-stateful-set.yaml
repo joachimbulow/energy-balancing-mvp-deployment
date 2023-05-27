@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: battery
-          image: pemmvpregistry.azurecr.io/battery:v12
+          image: pemmvpregistry.azurecr.io/battery:v10 # DELETE: next version is 13
           imagePullPolicy: Always
           resources:
             requests:
