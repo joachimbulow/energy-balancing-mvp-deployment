@@ -18,6 +18,13 @@ SPINNER_PID=$!
 # Redirect its output to avoid messing up the script's output
 exec 2>/dev/null
 
+# set "index" to 0 in redis master node
+REDIS_POD="charts-v1-redis-master-0"
+REDIS_KEY="index"
+REDIS_VALUE="0"
+
+kubectl exec -it $REDIS_POD -- redis-cli SET $REDIS_KEY $REDIS_VALUE
+
 # Run the command
 kubectl get pods --no-headers=true -o custom-columns=:metadata.name | grep tso | xargs kubectl delete pod
 
