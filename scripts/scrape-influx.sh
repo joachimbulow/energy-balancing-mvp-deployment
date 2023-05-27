@@ -30,6 +30,11 @@ maxFrequency=$(echo $result | awk '/maxFrequency/ {print $8}')
 result=$(kubectl exec charts-v1-influxdb-0 -- influx --database influx -precision rfc3339 --execute "SELECT MIN(frequency) AS minFrequency FROM frequency WHERE time > $time")
 minFrequency=$(echo $result | awk '/minFrequency/ {print $8}')
 
+# Finding min, max, and average latency
+result=$(kubectl exec charts-v1-influxdb-0 -- influx --database influx -precision rfc3339 --execute "SELECT MIN(latency) AS minLatency, MAX(latency) AS maxLatency, MEAN(latency) AS averageLatency FROM latency WHERE time > $time")
+minLatency=$(echo $result | awk '/latency/ {print $12}')
+maxLatency=$(echo $result | awk '/latency/ {print $13}')
+meanLatency=$(echo $result | awk '/latency/ {print $14}')
 
 ############ RESULTS ############
 
@@ -41,6 +46,9 @@ minFrequency=$(echo $result | awk '/minFrequency/ {print $8}')
 [ -z "$minFrequency" ] && minFrequency=0
 [ -z "$chargeSum" ] && chargeSum=0
 [ -z "$dischargeSum" ] && dischargeSum=0
+[ -z "$minLatency" ] && minLatency=0
+[ -z "$maxLatency" ] && maxLatency=0
+[ -z "$meanLatency" ] && meanLatency=0
 
 echo "Average frequency: $averageFrequency"
 echo "Median frequency: $medianFrequency"
@@ -51,4 +59,4 @@ echo "Charge actions: $chargeSum"
 echo "Discharge actions: $dischargeSum"
 
 echo "Saving results to $filename.csv..."
-echo -e "$time, $batteryPods, $nBatteries, $averageFrequency, $medianFrequency, $frequencyStdDev, $maxFrequency, $minFrequency, $chargeSum, $dischargeSum" >> $filename.csv
+echo -e "$time, $batteryPods, $nBatteries, $averageFrequency, $medianFrequency, $frequencyStdDev, $maxFrequency, $minFrequency, $chargeSum, $dischargeSum, $minLatency, $maxLatency, $meanLatency" >> $filename.csv
