@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: battery
-          image: pemmvpregistry.azurecr.io/battery:vdebugv2
+          image: pemmvpregistry.azurecr.io/battery:13
           imagePullPolicy: Always
           resources:
             requests:
