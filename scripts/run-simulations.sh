@@ -11,13 +11,13 @@
 
 # We expect you to be in the root of the project when running this file
 
-SIMULATION_TIME_MINUTES=25
+SIMULATION_TIME_MINUTES=60
 # Each index is a simulation parameter
-BATTERY_PODS=(50 100 100 200 400 600 700 800 1000 1)
-N_BATTERIES=(50 100 200 200 400 500 700 800 1000 1)
+BATTERY_PODS=(400 400 400 400)
+N_BATTERIES=(1000 1000 1000 1000 800 1000 1000)
 
 # We just assume batteries always have a wattage of 4000
-PACKET_TIME_S=(60 60 60 60 60 60 60 60 60 60)
+PACKET_TIME_S=(60 180 240 300)
 REQUEST_INTERVAL_SECONDS=(60 60 60 60 60 60 60 60 60 60)
 
 
@@ -30,9 +30,8 @@ for ((i=0; i < ${#BATTERY_PODS[@]}; i++)); do
     ./scripts/scale-system.sh ${BATTERY_PODS[$i]} ${N_BATTERIES[$i]} ${PACKET_TIME_S[$i]} ${REQUEST_INTERVAL_SECONDS[$i]}
 
     echo "Waiting a while to allow the system to settle"
-    ./scripts/sleep-timer.sh 90
+    ./scripts/sleep-timer.sh 140
     
-
     echo "╦═╗┌─┐┌─┐┌─┐┌┬┐";
     echo "╠╦╝├┤ └─┐├┤  │ ";
     echo "╩╚═└─┘└─┘└─┘ ┴ ";
@@ -44,7 +43,7 @@ for ((i=0; i < ${#BATTERY_PODS[@]}; i++)); do
 
     # For MacOS u need coreutils (install with `brew install coreutils`)
     time=$(gdate +%s%N)
-    echo "Starting the simulation at time: $time"
+    echo "Starting the simulation at time: $time ..."
 
     echo "┬─┐┬ ┬┌┐┌  ┌─┐┬┌┬┐┬ ┬┬  ┌─┐┌┬┐┬┌─┐┌┐┌";
     echo "├┬┘│ ││││  └─┐│││││ ││  ├─┤ │ ││ ││││";
@@ -56,12 +55,17 @@ for ((i=0; i < ${#BATTERY_PODS[@]}; i++)); do
     echo "╚═╗│  ├┬┘├─┤├─┘├┤ ";
     echo "╚═╝└─┘┴└─┴ ┴┴  └─┘";
 
-    echo "Gathering data from InfluxDB"
+    echo "Gathering data from InfluxDB..."
     ./scripts/scrape-influx.sh $time "mysimulation" ${BATTERY_PODS[$i]} ${N_BATTERIES[$i]}
-    sleep 10
+    ./scripts/sleep-timer.sh 10
 
     echo "╦═╗┌─┐┌─┐┌─┐┌─┐┌┬┐";
     echo "╠╦╝├┤ ├─┘├┤ ├─┤ │ ";
     echo "╩╚═└─┘┴  └─┘┴ ┴ ┴ ";
+
+    # Reset the system to "factory defaults"
+    ./scripts/scale-system.sh 0 0 0 0
+    echo "Resetting the system... please wait..."
+    ./scripts/sleep-timer.sh 120
 
 done

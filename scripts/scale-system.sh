@@ -5,6 +5,7 @@ N_BATTERIES=$2
 PACKET_TIME_S=$3
 REQUEST_INTERVAL_SECONDS=$4
 
+
 echo "Scaling the batteries to $BATTERY_PODS battery pods with $N_BATTERIES batteries - packet time: $PACKET_TIME_S - request interval: $REQUEST_INTERVAL_SECONDS"
 kubectl patch statefulset battery -n energy-balancing-mvp --patch "spec: { template: { spec: { containers: [ { name: "battery", env: [ { name: "N_BATTERIES", value: '${N_BATTERIES}' }, { name: "PACKET_TIME_S", value: '${PACKET_TIME_S}' }, { name: "REQUEST_INTERVAL_SECONDS", value: '${REQUEST_INTERVAL_SECONDS}' } ] } ] } } }"
 kubectl scale statefulset battery --replicas=${BATTERY_PODS}
